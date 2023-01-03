@@ -1,3 +1,5 @@
+/* Reset */
+
 *::after,
 *::before {
   box-sizing: border-box;
@@ -12,6 +14,8 @@ body {
   margin: 0;
 }
 
+/* Tabuleiro */
+
 .tabuleiro {
   width: 100vw;
   height: 100vh;
@@ -22,6 +26,8 @@ body {
   align-items: center;
   grid-template-columns: repeat(3, auto);
 }
+
+/* Posições do Tabuleiro */
 
 .cell {
   position: relative;
@@ -63,18 +69,31 @@ body {
 
 .cell.x::before,
 .cell.x::after {
+  background-color: black;
+}
+
+.tabuleiro.x .cell:not(.x):not(.circle):hover::before,
+.tabuleiro.x .cell:not(.x):not(.circle):hover::after {
+  background-color: lightgray;
+}
+
+.cell.x::before,
+.cell.x::after,
+.tabuleiro.x .cell:not(.x):not(.circle):hover::before,
+.tabuleiro.x .cell:not(.x):not(.circle):hover::after {
   content: "";
   position: absolute;
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
-  background-color: black;
 }
 
-.cell::before {
+.cell::before,
+.tabuleiro.x .cell:not(.x):not(.circle):hover::before {
   transform: rotate(45deg);
 }
 
-.cell::after {
+.cell::after,
+.tabuleiro.x .cell:not(.x):not(.circle):hover::after {
   transform: rotate(-45deg);
 }
 
@@ -82,19 +101,31 @@ body {
 
 .cell.circle::before,
 .cell.circle::after {
+  background-color: black;
+}
+
+.tabuleiro.circle .cell:not(.x):not(.circle):hover::before,
+.tabuleiro.circle .cell:not(.x):not(.circle):hover::after {
+  background-color: lightgray;
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.tabuleiro.circle .cell:not(.x):not(.circle):hover::before,
+.tabuleiro.circle .cell:not(.x):not(.circle):hover::after {
   content: "";
   position: absolute;
   border-radius: 50%;
-  background-color: black;
 }
 
-.cell.circle::before {
+.cell.circle::before,
+.tabuleiro.circle .cell:not(.x):not(.circle):hover::before {
   width: var(--mark-size);
   height: var(--mark-size);
-  background-color: black;
 }
 
-.cell.circle::after {
+.cell.circle::after,
+.tabuleiro.circle .cell:not(.x):not(.circle):hover::after {
   width: calc(var(--mark-size) * 0.7);
   height: calc(var(--mark-size) * 0.7);
   background-color: white;
